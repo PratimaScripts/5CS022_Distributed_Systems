@@ -1,0 +1,2 @@
+This is the module - Distributed System and Cloud Systems Programming.
+This module covers 20 credits. We are currently in the week 4. Week 4 covers the Apache Spark.
