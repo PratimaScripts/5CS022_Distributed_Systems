@@ -13,20 +13,21 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "use your own",
-    authDomain: " use your own ",
-    projectId: "use your own",
-    storageBucket: "use your own",
-    messagingSenderId: "use your own",
-    appId: "use your own"
+    apiKey: "AIzaSyCEH0IvDZ87ERE3DKRwMrprEfPZ4cpcVK4",
+    authDomain: "navneet-firebase-project.firebaseapp.com",
+    projectId: "navneet-firebase-project",
+    storageBucket: "navneet-firebase-project.appspot.com",
+    messagingSenderId: "1078911392027",
+    appId: "1:1078911392027:web:17dfeff09802bc69fc5bbe"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Get a live data snapshot (i.e. auto-refresh) of our Reviews collection
-const q = query(collection(db, "Reviews"), orderBy("book_name"));
+const q = query(collection(db, "reviews"), orderBy("book_name"));
 const unsubscribe = onSnapshot(q, (snapshot) => {
     // Empty HTML table
     $('#reviewList').empty();
@@ -67,7 +68,7 @@ const unsubscribe = onSnapshot(q, (snapshot) => {
 $("#addButton").click(function () {
 
     // Add review to Firestore collection
-    const docRef = addDoc(collection(db, "Reviews"), {
+    const docRef = addDoc(collection(db, "reviews"), {
         book_name: $("#bookName").val(),
         book_rating: parseInt($("#bookRating").val())
     });
@@ -83,7 +84,7 @@ $('#reviewList').on('click', '.updateBtn', function () {
     const newName = prompt("Enter new book name:");
     const newRating = parseInt(prompt("Enter new book rating:"));
     if (newName && !isNaN(newRating)) {
-        setDoc(doc(db, "Reviews", docId), {
+        setDoc(doc(db, "reviews", docId), {
             book_name: newName,
             book_rating: newRating
         }, { merge: true })
@@ -99,8 +100,9 @@ $('#reviewList').on('click', '.updateBtn', function () {
 // Delete button pressed
 $('#reviewList').on('click', '.deleteBtn', function () {
     const docId = $(this).data('id');
+    console.log(docId);
     if (confirm("Are you sure you want to delete this review?")) {
-        deleteDoc(doc(db, "Reviews", docId))
+        deleteDoc(doc(db, "reviews", docId))
             .then(() => {
                 console.log("Document successfully deleted!");
             })
