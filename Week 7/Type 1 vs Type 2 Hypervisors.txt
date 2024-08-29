@@ -1,0 +1,17 @@
+Type 1 Hypervisor / Baremetal Hypervisor: 
+The hypervisor runs directly on top of the physical servers. There is no servers in between. Mostly cloud providers uses them.
+
+
+Type 2 Hypervisor / Hosted Hypervisor:
+The hypervisor runs on top of the layer of Host OS that sits between physical server and the hypervisor.
+
+They are used for the end-user virtualization.
+
+E.g. Oracle, VMWare Workstation, VirtualBox.
+
+They have higher latency than the type 1 hypervisor.
+
+Benefits:
+1. Cost Savings
+2. Agility and Speed
+3. Lower Downtime
